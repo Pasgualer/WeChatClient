@@ -104,5 +104,18 @@
 
 			return $newsmsgList;
 		}
+
+		public function delete()
+		{
+			$mysql = new mysqlutil();
+
+			$newsmsg = new newsmsg();
+
+			$sql = sprintf("DELETE *
+                            FROM %s
+                            WHERE news_id = '%s'", $this->sqlname, $news_id);
+			$ret = $mysql->sqlquery($sql);
+			return $ret;
+		}
 	}
 ?>

@@ -83,7 +83,16 @@
 
 		public function delete()
 		{
+			$mysql = new mysqlutil();
 
+			$textmsg = new textmsg();
+
+			$sql = sprintf("DELETE *
+                            FROM %s
+                            WHERE text_id = '%s'", $this->sqlname, $text_id);
+			$ret = $mysql->sqlquery($sql);
+
+			return $ret;
 		}
 	}
 ?>
